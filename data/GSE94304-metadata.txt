@@ -1,0 +1,42 @@
+Sample_geo_accession	Sample Title	cell line	cell subtype	cell type
+GSM2475008	TOV-21G	TOV-21G	clear cell	high-grade serous ovarian cancer (HGSC) cell line
+GSM2474992	OVCAR433	OVCAR433	ovarian serous adenocarcinoma	high-grade serous ovarian cancer (HGSC) cell line
+GSM2474982	OV-1946	OV-1946	ovarian serous adenocarcinoma	high-grade serous ovarian cancer (HGSC) cell line
+GSM2474996	PEA1	PEA1	ovarian serous adenocarcinoma	high-grade serous ovarian cancer (HGSC) cell line
+GSM2474989	OVCAR3	OVCAR3	ovarian serous adenocarcinoma	high-grade serous ovarian cancer (HGSC) cell line
+GSM2474985	OV-3133	OV-3133	ovarian serous adenocarcinoma	high-grade serous ovarian cancer (HGSC) cell line
+GSM2475009	TOV-2223G	TOV-2223G	ovarian serous adenocarcinoma	high-grade serous ovarian cancer (HGSC) cell line
+GSM2475001	PEO23	PEO23	ovarian serous adenocarcinoma	high-grade serous ovarian cancer (HGSC) cell line
+GSM2474977	JHOC9	JHOC9	clear cell	high-grade serous ovarian cancer (HGSC) cell line
+GSM2474987	OV-56	OV-56	ovarian serous adenocarcinoma	high-grade serous ovarian cancer (HGSC) cell line
+GSM2474986	OV-3133(2)	OV-3133	ovarian serous adenocarcinoma	high-grade serous ovarian cancer (HGSC) cell line
+GSM2474991	OVCAR432	OVCAR432	ovarian serous adenocarcinoma	high-grade serous ovarian cancer (HGSC) cell line
+GSM2474984	OV-2295(2)	OV-2295	ovarian serous adenocarcinoma	high-grade serous ovarian cancer (HGSC) cell line
+GSM2474971	A2780	A2780	unknown histotype - ovarian origin	high-grade serous ovarian cancer (HGSC) cell line
+GSM2474995	OVSH-1	OVSH-1	clear cell	high-grade serous ovarian cancer (HGSC) cell line
+GSM2475003	PEO6	PEO6	ovarian serous adenocarcinoma	high-grade serous ovarian cancer (HGSC) cell line
+GSM2474999	PEO1C	PEO1C	ovarian serous adenocarcinoma	high-grade serous ovarian cancer (HGSC) cell line
+GSM2475005	SKOV3	SKOV3	ovarian serous adenocarcinoma	high-grade serous ovarian cancer (HGSC) cell line
+GSM2474997	PEA2	PEA2	ovarian serous adenocarcinoma	high-grade serous ovarian cancer (HGSC) cell line
+GSM2474994	OVCAR8	OVCAR8	ovarian serous adenocarcinoma	high-grade serous ovarian cancer (HGSC) cell line
+GSM2474998	PEO14	PEO14	ovarian serous adenocarcinoma	high-grade serous ovarian cancer (HGSC) cell line
+GSM2474993	OVCAR5	OVCAR5	ovarian serous adenocarcinoma	high-grade serous ovarian cancer (HGSC) cell line
+GSM2475004	RMG-1	RMG-1	clear cell	high-grade serous ovarian cancer (HGSC) cell line
+GSM2475002	PEO4	PEO4	ovarian serous adenocarcinoma	high-grade serous ovarian cancer (HGSC) cell line
+GSM2475000	PEO1L	PEO1L	ovarian serous adenocarcinoma	high-grade serous ovarian cancer (HGSC) cell line
+GSM2474979	OE E6/E7	OE E6/E7	immortalized human oviductal epithelium	high-grade serous ovarian cancer (HGSC) cell line
+GSM2474990	OVCAR420	OVCAR420	ovarian serous adenocarcinoma	high-grade serous ovarian cancer (HGSC) cell line
+GSM2475006	TOV-1369TR	TOV-1369TR	ovarian serous adenocarcinoma	high-grade serous ovarian cancer (HGSC) cell line
+GSM2475010	TOV-3133G	TOV-3133G	ovarian serous adenocarcinoma	high-grade serous ovarian cancer (HGSC) cell line
+GSM2474981	OV-17R	OV-17R	ovarian serous adenocarcinoma	high-grade serous ovarian cancer (HGSC) cell line
+GSM2474988	OV-90	OV-90	ovarian serous adenocarcinoma	high-grade serous ovarian cancer (HGSC) cell line
+GSM2474976	JHOC5	JHOC5	clear cell	high-grade serous ovarian cancer (HGSC) cell line
+GSM2474980	OV-1369(2)	OV-1369	ovarian serous adenocarcinoma	high-grade serous ovarian cancer (HGSC) cell line
+GSM2474973	COV318	COV318	ovarian serous adenocarcinoma	high-grade serous ovarian cancer (HGSC) cell line
+GSM2474975	ES-2	ES-2	clear cell	high-grade serous ovarian cancer (HGSC) cell line
+GSM2474983	OV-2295	OV-2295	ovarian serous adenocarcinoma	high-grade serous ovarian cancer (HGSC) cell line
+GSM2475007	TOV-1946	TOV-1946	ovarian serous adenocarcinoma	high-grade serous ovarian cancer (HGSC) cell line
+GSM2474974	COV504	COV504	ovarian serous adenocarcinoma	high-grade serous ovarian cancer (HGSC) cell line
+GSM2474970	60905OM	60905OM	ovarian serous adenocarcinoma	high-grade serous ovarian cancer (HGSC) cell line
+GSM2474978	OAW42	OAW42	ovarian serous adenocarcinoma	high-grade serous ovarian cancer (HGSC) cell line
+GSM2474972	A2780Cis	A2780Cis	unknown histotype - ovarian origin	high-grade serous ovarian cancer (HGSC) cell line
