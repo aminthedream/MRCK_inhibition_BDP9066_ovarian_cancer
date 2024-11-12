@@ -1,0 +1,141 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+This document demonstrates the application of Non-negative Matrix Factorization (NMF) to RNA-seq count data for clustering ovarian cancer cell lines. The goal is to identify distinct gene expression patterns and associate them with actionable targets.
+
+
+
+## Step 1: Data Preprocessing
+Before running NMF, the RNA-seq data must be filtered for low-expression genes, normalized, and converted to a matrix suitable for decomposition.
+
+```{r}
+library(ggplot2)
+library(pheatmap)
+library(cluster)
+library(Rtsne)
+library(umap)
+library(NbClust)
+library(clusterProfiler)
+library(org.Hs.eg.db)
+library(randomForest)
+library(ggplot2)
+library(tidyr)
+library(dplyr)
+library(reshape2)
+library(NMF)
+set.seed(123)
+```
+
+```{r}
+# 1. Data Preprocessing
+counts <- read.csv("~/Github_Repos/MRCK_inhibition_BDP9066_ovarian_cancer/data/GSE94304-expression.txt", sep = '\t', row.names = 1)
+metadata <- read.csv("~/Github_Repos/MRCK_inhibition_BDP9066_ovarian_cancer/data/GSE94304-metadata.txt", sep = '\t')
+
+# Clean sample titles in metadata
+metadata$Sample.Title <- gsub(pattern = "-", replacement = "_", metadata$Sample.Title)
+metadata$Sample.Title <- gsub(pattern = "/", replacement = "_", metadata$Sample.Title)
+
+# Update column names in counts to match metadata
+colnames(counts) <- metadata$Sample.Title
+
+# Filter low-count genes
+keep <- rowSums(counts >= 10) >= ncol(counts)/4  # Keep genes with at least 10 counts in 25% of samples
+filtered_counts <- counts[keep,]
+
+# Log transform (add a small constant to avoid log(0))
+lib_sizes <- colSums(filtered_counts)
+norm_counts <- t(t(filtered_counts) / lib_sizes * 1e6)
+log_norm_counts <- log2(norm_counts + 1)
+```
+
+Determining the Optimal Number of Components (Ranks) for NMF
+
+Before applying Non-negative Matrix Factorization (NMF) to the dataset, it is essential to determine the appropriate number of components (or ranks). This number defines how the data will be decomposed into meaningful patterns or clusters. Choosing too few components may oversimplify the data, while too many can introduce noise and overfit the model.
+
+
+```{r}
+nmf_data <- abs(log_norm_counts)
+
+# Determine the optimal number of components (ranks)
+estim.r <- nmf(nmf_data, 2:10, nrun = 10, seed = 123)
+plot(estim.r)
+```
+
+How I Selected 8 Components
+
+From the plot, I examined how the quality metric changed with the number of components:
+
+    The metric improves significantly as the rank increases initially but plateaus after a certain point.
+    The rank where the metric levels off or begins to decline indicates the optimal number of components. For this dataset, 8 components were chosen because:
+        It provided a balance between capturing meaningful patterns and avoiding overfitting.
+        The quality metric stabilized around this value, suggesting additional components did not add significant information.
+
+This approach ensures the decomposition provides interpretable and biologically meaningful results without unnecessary complexity.
+
+
+```{r}
+# Run NMF
+nmf_result <- nmf(nmf_data, 8, nrun = 50, seed = 123)
+consensusmap(nmf_result)
+# Extract the basis matrix (metagenes)
+metagenes <- basis(nmf_result)
+
+# Extract the coefficient matrix (metasamples)
+metasamples <- coef(nmf_result)
+
+
+top_genes <- extractFeatures(nmf_result, 1000)  # Top 20 genes per cluster
+
+# Assuming rownames(log_norm_counts) contains gene names
+gene_names <- rownames(log_norm_counts)
+
+# Function to convert indices to gene names
+indices_to_names <- function(indices) {
+  gene_names[indices]
+}
+
+# Convert top genes to names
+top_genes_named <- lapply(top_genes, indices_to_names)
+```
+
+Performing Gene Ontology (GO) Enrichment Analysis for Each Cluster
+
+After identifying 8 components (clusters) using NMF, the next logical step is to understand the biological significance of the genes associated with each cluster. To achieve this, I performed Gene Ontology (GO) enrichment analysis for the genes in each cluster.
+Purpose of This Step
+
+GO enrichment analysis helps to:
+
+    Identify the biological processes (BP) that are overrepresented in each cluster of genes.
+    Provide insights into the functional roles of the genes grouped into each component by NMF.
+
+
+
+
+
+```{r}
+perform_go_enrichment <- function(genes, component_name) {
+  ego <- enrichGO(gene = genes,
+                  OrgDb = org.Hs.eg.db,
+                  keyType = "SYMBOL",
+                  ont = "BP",
+                  pAdjustMethod = "BH",
+                  pvalueCutoff = 0.05,
+                  qvalueCutoff = 0.2)
+  
+  return(ego)
+}
+
+# Perform GO enrichment for all components
+all_enrichment_results <- list()
+for (i in 1:ncol(top_10_genes)) {
+  component_name <- paste("Component", i)
+  enrichment_result <- perform_go_enrichment(top_10_genes[,i], component_name)
+  all_enrichment_results[[component_name]] <- enrichment_result
+}
+```
+
+
+
+
